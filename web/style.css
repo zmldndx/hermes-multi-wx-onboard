@@ -1,0 +1,156 @@
+:root {
+  color-scheme: light dark;
+  --bg: #0f1419;
+  --card: #171d24;
+  --text: #e7ecf3;
+  --muted: #9aa7b5;
+  --accent: #f0b429;
+  --accent-2: #ffd166;
+  --danger: #ff6b6b;
+  --ok: #51cf66;
+  --border: rgba(255, 255, 255, 0.08);
+  font-family: "SF Pro Text", "PingFang SC", "Helvetica Neue", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top, rgba(240, 180, 41, 0.12), transparent 40%),
+    var(--bg);
+  color: var(--text);
+}
+
+.page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 32px 20px 64px;
+}
+
+.hero h1 {
+  margin: 8px 0 12px;
+  font-size: 2rem;
+}
+
+.eyebrow {
+  color: var(--accent);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  margin: 0;
+}
+
+.subtitle {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  margin-top: 24px;
+}
+
+.card.muted {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.card h2 {
+  margin-top: 0;
+  font-size: 1rem;
+}
+
+.card ul {
+  margin: 0;
+  padding-left: 1.2rem;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.status {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  min-height: 1.6em;
+}
+
+.qr-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 24px 0 8px;
+}
+
+.qr-wrap img {
+  width: 240px;
+  height: 240px;
+  background: #fff;
+  padding: 12px;
+  border-radius: 12px;
+}
+
+.qr-hint,
+.qr-url {
+  color: var(--muted);
+  font-size: 0.92rem;
+  text-align: center;
+  word-break: break-all;
+}
+
+.result {
+  margin-top: 16px;
+  padding: 16px;
+  border-radius: 12px;
+  background: rgba(81, 207, 102, 0.08);
+  border: 1px solid rgba(81, 207, 102, 0.25);
+  line-height: 1.7;
+}
+
+.result.error {
+  background: rgba(255, 107, 107, 0.08);
+  border-color: rgba(255, 107, 107, 0.25);
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+button {
+  appearance: none;
+  border: none;
+  border-radius: 999px;
+  padding: 12px 20px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #1a1200;
+  font-weight: 600;
+}
+
+button.secondary {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.hidden {
+  display: none !important;
+}
+
+@media (max-width: 640px) {
+  .hero h1 {
+    font-size: 1.6rem;
+  }
+}

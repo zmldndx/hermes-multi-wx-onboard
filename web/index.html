@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hermes 微信助手绑定</title>
+    <link rel="stylesheet" href="/assets/style.css" />
+  </head>
+  <body>
+    <main class="page">
+      <header class="hero">
+        <p class="eyebrow">Hermes Agent</p>
+        <h1>绑定你的微信助手</h1>
+        <p class="subtitle">
+          扫码后会自动创建独立 Profile、启动 Gateway。请在微信里给 bot 发私信开始对话。
+        </p>
+      </header>
+
+      <section class="card" id="card">
+        <div id="status" class="status">准备开始...</div>
+        <div id="qr-wrap" class="qr-wrap hidden">
+          <img id="qr-image" alt="微信扫码二维码" width="240" height="240" />
+          <p class="qr-hint">打开微信，扫一扫上方二维码，并在手机上确认</p>
+          <p id="qr-url" class="qr-url hidden"></p>
+        </div>
+        <div id="result" class="result hidden"></div>
+        <div class="actions">
+          <button id="start-btn" type="button">开始绑定</button>
+          <button id="retry-btn" type="button" class="secondary hidden">重新开始</button>
+        </div>
+      </section>
+
+      <section class="card muted">
+        <h2>说明</h2>
+        <ul>
+          <li>绑定的是 iLink Bot 身份，不是接管你的个人微信号。</li>
+          <li>成功后请在微信里找到 bot，发送任意消息即可对话。</li>
+          <li>若 Gateway 异常退出，服务会尝试自动拉起（约 60 秒巡检一次）。</li>
+          <li>若出现 session 过期（-14），需重新扫码绑定。</li>
+        </ul>
+      </section>
+    </main>
+    <script src="/assets/app.js"></script>
+  </body>
+</html>
