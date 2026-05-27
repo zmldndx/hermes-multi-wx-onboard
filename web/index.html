@@ -3,20 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hermes 微信助手绑定</title>
+    <title>Hermes 爱马仕 · 微信助理绑定</title>
     <link rel="stylesheet" href="/assets/style.css" />
   </head>
   <body>
     <main class="page">
       <header class="hero">
-        <p class="eyebrow">Hermes Agent</p>
-        <h1>绑定你的微信助手</h1>
+        <p class="eyebrow">最右 · Hermes 爱马仕</p>
+        <h1>个人微信助理</h1>
         <p class="subtitle">
-          扫码后会自动创建独立 Profile、启动 Gateway。请在微信里给 bot 发私信开始对话。
+          最右公司内提供的 Hermes 爱马仕个人微信助理。完成下方扫码绑定后，可在微信中与 bot 私信对话。
         </p>
       </header>
 
       <section class="card" id="card">
+        <h2 class="card-title">扫码绑定</h2>
         <div id="status" class="status">准备开始...</div>
         <div id="qr-wrap" class="qr-wrap hidden">
           <img id="qr-image" alt="微信扫码二维码" width="240" height="240" />
@@ -31,13 +32,64 @@
       </section>
 
       <section class="card muted">
-        <h2>说明</h2>
+        <h2>绑定说明</h2>
         <ul>
-          <li>绑定的是 iLink Bot 身份，不是接管你的个人微信号。</li>
-          <li>成功后请在微信里找到 bot，发送任意消息即可对话。</li>
-          <li>若 Gateway 异常退出，服务会尝试自动拉起（约 60 秒巡检一次）。</li>
-          <li>若出现 session 过期（-14），需重新扫码绑定。</li>
+          <li>绑定的是 iLink Bot 身份，不会接管你的个人微信号。</li>
+          <li>绑定成功后，在微信中找到 bot，发送任意消息即可开始对话。</li>
         </ul>
+      </section>
+
+      <section class="card muted">
+        <h2>默认技能</h2>
+        <p class="section-lead">绑定完成后会自动安装以下技能，可在对话中直接使用。</p>
+        <div class="skill-list">
+          <article class="skill-item">
+            <div class="skill-head">
+              <h3>公司文档库检索</h3>
+              <span class="skill-tag">doc-search</span>
+            </div>
+            <p>
+              覆盖<strong>最右</strong>、<strong>小川</strong>等公司内部文档库，可检索并整理你账号权限范围内的文档。
+            </p>
+            <p class="skill-note">
+              <span class="note-label">首次使用</span>
+              需绑定 Conference Wiki 个人账号后方可搜索。在下方填写用户名与密码，生成 Base64 凭证后复制发给 bot 完成绑定。
+            </p>
+            <form id="wiki-bind-form" class="wiki-bind-form">
+              <label class="field">
+                <span class="field-label">用户名</span>
+                <input
+                  id="wiki-username"
+                  name="username"
+                  type="text"
+                  autocomplete="username"
+                  placeholder="Conference Wiki 用户名"
+                  required
+                />
+              </label>
+              <label class="field">
+                <span class="field-label">密码</span>
+                <input
+                  id="wiki-password"
+                  name="password"
+                  type="password"
+                  autocomplete="current-password"
+                  placeholder="Conference Wiki 密码"
+                  required
+                />
+              </label>
+              <button type="submit" class="wiki-submit-btn">确认生成</button>
+            </form>
+            <div id="wiki-credential-output" class="wiki-credential-output hidden">
+              <p class="credential-label">用户名:密码 的 Base64 编码</p>
+              <div class="credential-row">
+                <code id="wiki-credential-b64" class="credential-code"></code>
+                <button type="button" id="wiki-copy-btn" class="copy-btn">一键复制</button>
+              </div>
+              <p id="wiki-copy-feedback" class="copy-feedback hidden">已复制到剪贴板</p>
+            </div>
+          </article>
+        </div>
       </section>
     </main>
     <script src="/assets/app.js"></script>

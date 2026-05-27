@@ -163,6 +163,90 @@ retryBtn.addEventListener("click", () => {
   setStatus("准备开始...");
 });
 
+const wikiBindForm = document.getElementById("wiki-bind-form");
+const wikiUsernameInput = document.getElementById("wiki-username");
+const wikiPasswordInput = document.getElementById("wiki-password");
+const wikiCredentialOutput = document.getElementById("wiki-credential-output");
+const wikiCredentialB64 = document.getElementById("wiki-credential-b64");
+const wikiCopyBtn = document.getElementById("wiki-copy-btn");
+const wikiCopyFeedback = document.getElementById("wiki-copy-feedback");
+
+function encodeWikiCredential(username, password) {
+  const raw = `${username}:${password}`;
+  const bytes = new TextEncoder().encode(raw);
+  let binary = "";
+  for (const byte of bytes) {
+    binary += String.fromCharCode(byte);
+  }
+  return btoa(binary);
+}
+
+function showWikiCredential(encoded) {
+  wikiCredentialB64.textContent = encoded;
+  wikiCredentialOutput.classList.remove("hidden");
+  wikiCopyFeedback.classList.add("hidden");
+}
+
+wikiBindForm?.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const username = wikiUsernameInput.value.trim();
+  const password = wikiPasswordInput.value;
+  if (!username || !password) {
+    return;
+  }
+  showWikiCredential(encodeWikiCredential(username, password));
+});
+
+async function copyTextToClipboard(text) {
+  if (navigator.clipboard?.writeText) {
+    try {
+      await navigator.clipboard.writeText(text);
+      return true;
+    } catch {
+      // 非 HTTPS / 非 localhost 时 Clipboard API 常被拒绝，走下方兜底
+    }
+  }
+
+  const textarea = document.createElement("textarea");
+  textarea.value = text;
+  textarea.setAttribute("readonly", "");
+  textarea.style.position = "fixed";
+  textarea.style.left = "-9999px";
+  textarea.style.top = "0";
+  document.body.appendChild(textarea);
+  textarea.focus();
+  textarea.select();
+  textarea.setSelectionRange(0, text.length);
+
+  let ok = false;
+  try {
+    ok = document.execCommand("copy");
+  } finally {
+    document.body.removeChild(textarea);
+  }
+  return ok;
+}
+
+wikiCopyBtn?.addEventListener("click", async () => {
+  const text = wikiCredentialB64.textContent?.trim();
+  if (!text) {
+    return;
+  }
+
+  const copied = await copyTextToClipboard(text);
+  wikiCopyFeedback.classList.remove("hidden");
+  if (copied) {
+    wikiCopyFeedback.textContent = "已复制到剪贴板";
+    wikiCopyBtn.textContent = "已复制";
+    window.setTimeout(() => {
+      wikiCopyBtn.textContent = "一键复制";
+    }, 2000);
+    return;
+  }
+
+  wikiCopyFeedback.textContent = "复制失败，请手动选中上方编码后复制";
+});
+
 fetch("/api/health")
   .then((res) => res.json())
   .then((data) => {

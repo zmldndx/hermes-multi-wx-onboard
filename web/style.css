@@ -61,9 +61,164 @@ body {
   background: rgba(255, 255, 255, 0.02);
 }
 
-.card h2 {
+.card h2,
+.card-title {
   margin-top: 0;
   font-size: 1rem;
+}
+
+.card-title {
+  margin-bottom: 16px;
+}
+
+.section-lead {
+  margin: 0 0 16px;
+  color: var(--muted);
+  line-height: 1.6;
+  font-size: 0.92rem;
+}
+
+.skill-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.skill-item {
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.skill-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.skill-item h3 {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.skill-tag {
+  flex-shrink: 0;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 0.75rem;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: rgba(240, 180, 41, 0.12);
+  color: var(--accent-2);
+  border: 1px solid rgba(240, 180, 41, 0.2);
+}
+
+.skill-item p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.65;
+  font-size: 0.92rem;
+}
+
+.skill-item p + p {
+  margin-top: 10px;
+}
+
+.skill-note {
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: rgba(240, 180, 41, 0.06);
+  border: 1px solid rgba(240, 180, 41, 0.12);
+}
+
+.note-label {
+  display: inline-block;
+  margin-right: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent-2);
+}
+
+.wiki-bind-form {
+  display: grid;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+}
+
+.field-label {
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.field input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: rgba(0, 0, 0, 0.2);
+  color: var(--text);
+  font-size: 0.92rem;
+}
+
+.field input:focus {
+  outline: 2px solid rgba(240, 180, 41, 0.35);
+  outline-offset: 1px;
+}
+
+.wiki-submit-btn {
+  justify-self: start;
+  padding: 10px 18px;
+  font-size: 0.88rem;
+}
+
+.wiki-credential-output {
+  margin-top: 14px;
+}
+
+.credential-label {
+  margin: 0 0 8px;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.credential-row {
+  display: flex;
+  gap: 10px;
+  align-items: stretch;
+}
+
+.credential-code {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--border);
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  word-break: break-all;
+  color: var(--accent-2);
+}
+
+.copy-btn {
+  flex-shrink: 0;
+  padding: 10px 16px;
+  font-size: 0.85rem;
+}
+
+.copy-feedback {
+  margin: 8px 0 0;
+  font-size: 0.82rem;
+  color: var(--ok);
 }
 
 .card ul {
