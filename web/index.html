@@ -46,14 +46,14 @@
           <article class="skill-item">
             <div class="skill-head">
               <h3>公司文档库检索</h3>
-              <span class="skill-tag">doc-search</span>
+              <span class="skill-tag">zuiyou-doc-search</span>
             </div>
             <p>
               覆盖<strong>最右</strong>、<strong>小川</strong>等公司内部文档库，可检索并整理你账号权限范围内的文档。
             </p>
             <p class="skill-note">
               <span class="note-label">首次使用</span>
-              需绑定 Conference Wiki 个人账号后方可搜索。在下方填写用户名与密码，生成 Base64 凭证后复制发给 bot 完成绑定。
+              需绑定 Conference Wiki 个人账号后方可搜索。在下方填写用户名与密码，生成配置指令后复制到微信助手中完成绑定。
             </p>
             <form id="wiki-bind-form" class="wiki-bind-form">
               <label class="field">
@@ -81,7 +81,9 @@
               <button type="submit" class="wiki-submit-btn">确认生成</button>
             </form>
             <div id="wiki-credential-output" class="wiki-credential-output hidden">
-              <p class="credential-label">用户名:密码 的 Base64 编码</p>
+              <p class="credential-label">
+                skill 配置魔法，请一键复制后在微信助手中粘贴并发起请求，完成权限配置。
+              </p>
               <div class="credential-row">
                 <code id="wiki-credential-b64" class="credential-code"></code>
                 <button type="button" id="wiki-copy-btn" class="copy-btn">一键复制</button>

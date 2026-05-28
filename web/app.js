@@ -181,8 +181,12 @@ function encodeWikiCredential(username, password) {
   return btoa(binary);
 }
 
+function formatWikiCredentialMessage(encoded) {
+  return `请修改 zuiyou-doc-search skill 的 BASE64_TOKEN=${encoded}`;
+}
+
 function showWikiCredential(encoded) {
-  wikiCredentialB64.textContent = encoded;
+  wikiCredentialB64.textContent = formatWikiCredentialMessage(encoded);
   wikiCredentialOutput.classList.remove("hidden");
   wikiCopyFeedback.classList.add("hidden");
 }
