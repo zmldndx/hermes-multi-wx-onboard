@@ -182,7 +182,7 @@ function encodeWikiCredential(username, password) {
 }
 
 function formatWikiCredentialMessage(encoded) {
-  return `请修改 zuiyou-doc-search skill 的 BASE64_TOKEN=${encoded}`;
+  return `请修改 zuiyou-doc-search skill 的 BASE64_TOKEN="${encoded}"`;
 }
 
 function showWikiCredential(encoded) {
